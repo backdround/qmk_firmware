@@ -1,69 +1,5 @@
 #include QMK_KEYBOARD_H
 
-
-////////////////////////////////////////
-// Independent keys.
-
-enum INDEPENDENT_KEYCODES {
-    FIRST_INDEPENDENT_KEYCODE = SAFE_RANGE,
-
-    I_COMM,
-    I_DOT,
-    I_COLN,
-
-    I_SCLN,
-    I_AMPR,
-    I_ASTR,
-
-    I_LBRC,
-    I_RBRC,
-    I_LCBR,
-    I_RCBR,
-
-    I_TILD,
-    I_GRV,
-    I_DQUO,
-    I_QUOT,
-    I_EXLM,
-    I_QUES,
-    I_SLSH,
-    I_DLR,
-    I_PERC,
-    I_AT,
-    I_CIRC,
-
-    LAST_INDEPENDENT_KEYCODE
-};
-
-static const uint16_t independent_keys[] = {
-    KC_COMM,
-    KC_DOT ,
-    KC_COLN,
-
-    KC_SCLN,
-    KC_AMPR,
-    KC_ASTR,
-
-    KC_LBRC,
-    KC_RBRC,
-    KC_LCBR,
-    KC_RCBR,
-
-    KC_TILD,
-    KC_GRV ,
-    KC_DQUO,
-    KC_QUOT,
-    KC_EXLM,
-    KC_QUES,
-    KC_SLSH,
-    KC_DLR ,
-    KC_PERC,
-    KC_AT  ,
-    KC_CIRC
-};
-
-
-
 ////////////////////////////////////////
 // Key aliases.
 
@@ -81,6 +17,14 @@ static const uint16_t independent_keys[] = {
 #define I_PSCR LGUI(KC_PSCR) // Interactive
 #define F_PSCR LCTL(KC_PSCR) // Full virtual space
 #define W_PSCR LSFT(KC_PSCR) // Window
+
+// Additional ru keys
+#define O_TSE KC_KP_1 // ц
+#define O_SHS KC_KP_2 // щ
+#define O_SHE KC_KP_3 // ш
+#define O_FEE KC_KP_4 // ф
+#define O_YUU KC_KP_5 // ю
+#define O_YEE KC_KP_6 // э
 
 
 ////////////////////////////////////////
@@ -111,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    ADD_,    KC_LCTL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_SPC,           SPEC_,   KC_N,    KC_M,    I_COMM,  I_DOT,   I_SLSH,  KC_RSFT,
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_SPC,           SPEC_,   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_LALT, KC_LGUI, SYMB_,                     SYMB_,   KC_SPC,  KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -122,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, I_PSCR,  KC_PSCR, F_PSCR,  W_PSCR,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_MINS, KC_PLUS, KC_EQL,  I_AMPR,  I_ASTR,                             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+     _______, KC_MINS, KC_PLUS, KC_EQL,  KC_AMPR, KC_ASTR,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_HASH, KC_UNDS, KC_LPRN, KC_RPRN, KC_PIPE,                            TAB,     KC_ENT,  KC_ESC,  KC_BSPC, SH_TAB,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, I_LBRC,  I_RBRC,  I_LCBR,  I_RCBR,  KC_BSLS, _______,          _______, KC_INS,  _______, _______, KC_DEL,  SH_INS,  _______,
+     _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_BSLS, _______,          _______, KC_INS,  _______, _______, KC_DEL,  SH_INS,  _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______, _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -136,11 +80,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, I_TILD,  I_GRV,   I_DQUO,  I_QUOT,  _______,                            _______, KC_LBRC, KC_SCLN, _______, _______, _______,
+     _______, KC_TILD, KC_GRV,  KC_DQUO, KC_QUOT,  _______,                           _______, O_SHS,   O_FEE,   _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, I_EXLM,  I_QUES,  I_SCLN,  I_COLN,  I_DLR,                              KC_RBRC, KC_DOT,  KC_COMM, _______, _______, _______,
+     _______, KC_EXLM, KC_QUES, KC_SCLN, KC_COLN, KC_DLR,                             O_TSE,   O_YUU,   O_SHE,   _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, I_PERC,  I_AT,    I_CIRC,  _______, _______,          _______, _______, KC_QUOT, _______, _______, _______, _______,
+     _______, _______, KC_PERC, KC_AT,   KC_CIRC,  _______, _______,         _______, _______, O_YEE,   _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______, _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -176,99 +120,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-
-enum LAYOUT {
-    US,
-    RU,
-    DV,
-    LAST_LAYOUT
-};
-static enum LAYOUT current_layout = US;
-
-bool sync_os_layout(uint16_t keycode) {
-    if (keycode == TO_US) {
-        current_layout = US;
-        return true;
-    } else if (keycode == TO_RU) {
-        current_layout = RU;
-        return true;
-    } else if (keycode == TO_DV) {
-        current_layout = DV;
-        return true;
-    }
-    return false;
-}
-
-
-
-void tap_us_key(uint16_t keycode) {
-    bool l_shifted = get_mods() & MOD_BIT(KC_LSFT);
-    bool r_shifted = get_mods() & MOD_BIT(KC_RSFT);
-
-
-    bool shifted = l_shifted || r_shifted;
-    if (shifted) { clear_mods(); }
-
-    tap_code16(TO_US);
-
-    if (shifted) {
-        tap_code16(LSFT(keycode));
-    } else {
-        tap_code16(keycode);
-    }
-
-    if (current_layout == RU) {
-        tap_code16(TO_RU);
-    } else if (current_layout == DV) {
-        tap_code16(TO_DV);
-    }
-
-
-    if (l_shifted) { register_code16(KC_LSFT); }
-    if (r_shifted) { register_code16(KC_RSFT); }
-}
-
-
-bool handle_custom_keys(uint16_t keycode, bool pressed) {
-    if (keycode <= FIRST_INDEPENDENT_KEYCODE || keycode >= LAST_INDEPENDENT_KEYCODE) {
-        return false;
-    }
-
-    int index = keycode - 1 - FIRST_INDEPENDENT_KEYCODE;
-
-    uint16_t independent_keycode = independent_keys[index];
-    if (current_layout == RU && pressed) {
-        tap_us_key(independent_keycode);
-        return true;
-    }
-
-    if (pressed) {
-        register_code16(independent_keycode);
-    } else {
-        unregister_code16(independent_keycode);
-    }
-
-    return true;
-}
-
-
-
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    if (sync_os_layout(keycode)) {
-        return true;
-    }
-
-
-    // Pass common keys.
-    if (keycode < FIRST_INDEPENDENT_KEYCODE || keycode > LAST_INDEPENDENT_KEYCODE) {
-        return true;
-    }
-
-
-    if (handle_custom_keys(keycode, record->event.pressed)) {
-        return false;
-    }
-
-    // Unexpected situation.
     return true;
 }
