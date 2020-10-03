@@ -9,9 +9,9 @@
 #define SH_TAB RSFT(KC_TAB)
 
 // OS language switch
-#define TO_US KC_CAPS
+#define TO_DV KC_CAPS
+#define TO_US LCTL(KC_CAPS)
 #define TO_RU LSFT(KC_CAPS)
-#define TO_DV LCTL(KC_CAPS)
 
 // OS printscreens
 #define I_PSCR LGUI(KC_PSCR) // Interactive
@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, KC_1,    TO_DV,   TO_US,   TO_RU,   CUST_,                              CUST_,   KC_VOLU, KC_MUTE, KC_VOLD, _______, _______,
+     _______, KC_1,    TO_US,   TO_DV,   TO_RU,   CUST_,                              CUST_,   KC_VOLU, KC_MUTE, KC_VOLD, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      SPEC_,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    SPEC_,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
