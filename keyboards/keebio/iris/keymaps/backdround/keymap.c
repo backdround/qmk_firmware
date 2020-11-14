@@ -4,7 +4,7 @@
 // Key aliases.
 
 // OS tab
-#define TAB RALT(KC_H)
+#define TAB KC_TAB
 #define SH_INS LSFT(KC_INS)
 #define SH_TAB RSFT(KC_TAB)
 
