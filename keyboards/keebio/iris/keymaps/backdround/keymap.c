@@ -10,7 +10,6 @@
 
 // OS language switch
 #define TO_DV KC_CAPS
-#define TO_US LCTL(KC_CAPS)
 #define TO_RU LSFT(KC_CAPS)
 
 // OS printscreens
@@ -23,7 +22,7 @@
 // Layouts.
 
 enum LAYOUTS {
-    _QWERTY,
+    _DVORAK,
     _SYMBOLS,
     _ADDITIONAL,
     _SPECIAL,
@@ -39,15 +38,15 @@ enum LAYOUTS {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_QWERTY] = LAYOUT(
+  [_DVORAK] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, KC_1,    TO_US,   TO_DV,   TO_RU,   CUST_,                              CUST_,   KC_VOLU, KC_MUTE, KC_VOLD, _______, _______,
+     _______, KC_1,    KC_2,    TO_DV,   TO_RU,   CUST_,                              CUST_,   KC_VOLU, KC_MUTE, KC_VOLD, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     SPEC_,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    SPEC_,
+     SPEC_,   KC_W,    KC_V,    KC_S,    KC_P,    KC_Y,                               KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    SPEC_,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    ADD_,    KC_LCTL,
+     KC_LCTL, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                               KC_D,    KC_H,    KC_T,    KC_N,    ADD_,    KC_LCTL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_SPC,           SPEC_,   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+     KC_LSFT, KC_Z,    KC_Q,    KC_J,    KC_K,    KC_X,    KC_SPC,           SPEC_,   KC_B,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_LALT, KC_LGUI, SYMB_,                     SYMB_,   KC_SPC,  KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
