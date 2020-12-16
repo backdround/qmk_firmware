@@ -11,6 +11,7 @@
 // OS language switch
 #define TO_DV KC_CAPS
 #define TO_RU LSFT(KC_CAPS)
+#define TO_US KC_LANG1
 
 // OS printscreens
 #define I_PSCR LGUI(KC_PSCR) // Interactive
@@ -40,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_DVORAK] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, KC_1,    KC_2,    TO_DV,   TO_RU,   CUST_,                              CUST_,   KC_VOLU, KC_MUTE, KC_VOLD, _______, _______,
+     _______, KC_1,    TO_US,   TO_DV,   TO_RU,   CUST_,                              CUST_,   KC_VOLU, KC_MUTE, KC_VOLD, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      SPEC_,   KC_W,    KC_V,    KC_S,    KC_P,    KC_Y,                               KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    SPEC_,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
