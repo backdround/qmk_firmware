@@ -9,9 +9,9 @@
 #define MIKE KC_INT1
 
 // OS language switch
-#define TO_GAME KC_CAPS
-#define TO_DV KC_CAPS
-#define TO_RU LSFT(KC_CAPS)
+#define TO_GAME KC_LANG1
+#define TO_DV KC_LANG1
+#define TO_RU LSFT(KC_LANG1)
 
 // OS printscreens
 #define I_PSCR LGUI(KC_PSCR) // Interactive
