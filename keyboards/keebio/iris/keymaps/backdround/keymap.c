@@ -14,9 +14,7 @@
 #define TO_RU LSFT(KC_LANG1)
 
 // OS printscreens
-#define I_PSCR LGUI(KC_PSCR) // Interactive
-#define F_PSCR LCTL(KC_PSCR) // Full virtual space
-#define W_PSCR LSFT(KC_PSCR) // Window
+#define W_PSCR LGUI(KC_PSCR) // Window
 
 // Language switch internal keycodes
 enum custom_keycodes {
@@ -64,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYMBOLS] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, _______, _______, _______, _______, _______,                            _______, I_PSCR,  KC_PSCR, F_PSCR,  W_PSCR,  _______,
+     _______, _______, _______, _______, _______, _______,                            _______, KC_PSCR, W_PSCR,  _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_MINS, KC_PLUS, KC_EQL,  KC_AMPR, KC_ASTR,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PAUSE, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
