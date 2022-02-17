@@ -153,17 +153,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     switch (keycode) {
         case K_GAME:
-            register_code(TO_GAME);
+            tap_code(TO_GAME);
             layer_off(_DVORAK);
             layer_on(_GAME);
             break;
         case K_DV:
-            register_code(TO_DV);
+            tap_code(TO_DV);
             layer_off(_GAME);
             layer_on(_DVORAK);
             break;
         case K_RU:
-            register_code16(TO_RU);
+            tap_code16(TO_RU);
             layer_off(_GAME);
             layer_on(_DVORAK);
             break;
