@@ -15,19 +15,49 @@
 // OS printscreens
 #define W_PSCR LGUI(KC_PSCR) // Window
 
+// Shift + F1-F12 == F13-F24 for vim
+#define S_F1  LSFT(KC_F1)
+#define S_F2  LSFT(KC_F2)
+#define S_F3  LSFT(KC_F3)
+#define S_F4  LSFT(KC_F4)
+#define S_F5  LSFT(KC_F5)
+#define S_F6  LSFT(KC_F6)
+#define S_F7  LSFT(KC_F7)
+#define S_F8  LSFT(KC_F8)
+#define S_F9  LSFT(KC_F9)
+#define S_F10 LSFT(KC_F10)
+#define S_F11 LSFT(KC_F11)
+#define S_F12 LSFT(KC_F12)
+
+// Ctrl + F1-F12 == F25-F36 for vim
+#define C_F1  LCTL(KC_F1)
+#define C_F2  LCTL(KC_F2)
+#define C_F3  LCTL(KC_F3)
+#define C_F4  LCTL(KC_F4)
+#define C_F5  LCTL(KC_F5)
+#define C_F6  LCTL(KC_F6)
+#define C_F7  LCTL(KC_F7)
+#define C_F8  LCTL(KC_F8)
+#define C_F9  LCTL(KC_F9)
+#define C_F10 LCTL(KC_F10)
+#define C_F11 LCTL(KC_F11)
+#define C_F12 LCTL(KC_F12)
+
 ////////////////////////////////////////
 // Layouts.
 
 enum LAYOUTS {
     _DVORAK,
-    _SYMBOLS,
+    _SYMBOLS_LEFT,
+    _SYMBOLS_RIGHT,
     _ADDITIONAL,
     _SPECIAL,
     _CUSTOMIZATION,
 };
 
 // Momentary layout
-#define SYMB_ MO(_SYMBOLS)
+#define SYMB_L_ MO(_SYMBOLS_LEFT)
+#define SYMB_R_ MO(_SYMBOLS_RIGHT)
 #define ADD_  MO(_ADDITIONAL)
 #define SPEC_ MO(_SPECIAL)
 #define CUST_ MO(_CUSTOMIZATION)
@@ -44,19 +74,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, KC_Z,    KC_Q,    KC_J,    KC_K,    KC_X,    MIKE,             MIKE,    KC_B,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LALT, KC_LGUI, SYMB_,                     SYMB_,   KC_SPC,  KC_LALT
+                                    KC_LALT, KC_LGUI, SYMB_R_,                   SYMB_L_, KC_SPC,  KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_SYMBOLS] = LAYOUT(
+  [_SYMBOLS_LEFT] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, KC_MINS, KC_PLUS, KC_EQL,  KC_AMPR, KC_ASTR,                            _______, C_F1,    C_F2,    C_F3,    C_F4,     _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, KC_HASH, KC_UNDS, KC_LPRN, KC_RPRN, KC_PIPE,                            _______, C_F5,    C_F6,    C_F7,    C_F8,     _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_BSLS, _______,          _______, _______, C_F9,    C_F10,   C_F11,   C_F12,    _______,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    _______, _______, _______,                   _______, _______, _______
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+  [_SYMBOLS_RIGHT] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, KC_PSCR, W_PSCR,  _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_MINS, KC_PLUS, KC_EQL,  KC_AMPR, KC_ASTR,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PAUSE, _______,
+     _______, S_F1,    S_F2,    S_F3,    S_F4,    _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PAUSE,_______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_HASH, KC_UNDS, KC_LPRN, KC_RPRN, KC_PIPE,                            KC_TAB,  KC_ENT,  KC_ESC,  KC_BSPC, SH_TAB,  _______,
+     _______, S_F5,    S_F6,    S_F7,    S_F8,    _______,                            KC_TAB,  KC_ENT,  KC_ESC,  KC_BSPC, SH_TAB,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_BSLS, _______,          _______, KC_INS,  TO_DV,   TO_RU,   KC_DEL,  SH_INS,  _______,
+     _______, S_F9,    S_F10,   S_F11,   S_F12,   _______, _______,          _______, KC_INS,  TO_DV,   TO_RU,   KC_DEL,  SH_INS,  _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______, _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
