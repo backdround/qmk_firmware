@@ -51,7 +51,7 @@
 enum LAYOUTS {
     _DVORAK,
     _QWERTY,
-    _QWERTY_GAME,
+    _GAME_LAYOUT,
     _SYMBOLS_LEFT,
     _SYMBOLS_RIGHT,
     _ADDITIONAL,
@@ -74,8 +74,25 @@ enum LAYOUTS {
 
 // Base layouts
 #define QWRT_L_ DF(_QWERTY)
-#define QWRTG_L_ DF(_QWERTY_GAME)
+#define GAME_L_ DF(_GAME_LAYOUT)
 #define DVRK_L_ DF(_DVORAK)
+
+enum custom_keycodes {
+    J_UP = SAFE_RANGE,
+    J_DOWN,
+    J_LEFT,
+    J_RGHT,
+    J_0,
+    J_1,
+    J_2,
+    J_3,
+    J_4,
+    J_5,
+    J_6,
+    J_7,
+    J_8,
+    J_9,
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -107,17 +124,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_QWERTY_GAME] = LAYOUT(
+  [_GAME_LAYOUT] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,
+     _______, _______, _______, _______, _______, _______,                            KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_ESC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB,  KC_Q,    KC_UP,   KC_E,    KC_R,    KC_T,                               KC_R,    KC_E,    KC_UP,   KC_Q,    KC_TAB,  KC_P,
+     _______, _______, J_UP,    _______, _______, _______,                            KC_R,    KC_E,    KC_UP,   KC_Q,    KC_TAB,  KC_P,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_F,    KC_G,                               KC_I,    KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL, KC_SCLN,
+     _______, J_LEFT,  J_DOWN,  J_RGHT,  _______, _______,                            KC_I,    KC_LEFT, KC_DOWN, KC_RGHT, KC_LCTL, KC_SCLN,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LGUI,          DVRK_L_, KC_0,    KC_1,    KC_2,    KC_3,    KC_LSFT, KC_SLSH,
+     _______, _______, _______, _______, _______, _______, J_4,              DVRK_L_, KC_0,    KC_1,    KC_2,    KC_3,    KC_LSFT, KC_SLSH,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_K,    KC_O,    KC_P,                      KC_TAB,  KC_SPC,  KC_LALT
+                                    J_3,     J_1,     J_2,                       KC_TAB,  KC_SPC,  KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -129,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_HASH, KC_UNDS, KC_LPRN, KC_RPRN, KC_PIPE,                            _______, _______, _______, _______, _______,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_BSLS, _______,          QWRTG_L_, _______, _______, _______, _______, _______, _______,
+     _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_BSLS, _______,          GAME_L_, _______, _______, _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______, _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -143,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, S_F5,    S_F6,    S_F7,    S_F8,    _______,                            KC_TAB,  KC_ENT,  KC_ESC,  KC_BSPC, SH_TAB,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, S_F9,    S_F10,   S_F11,   S_F12,   _______, QWRTG_L_,         QWRT_L_, KC_INS,  TO_DV,   TO_RU,   KC_DEL,  SH_INS,  _______,
+     _______, S_F9,    S_F10,   S_F11,   S_F12,   _______, GAME_L_,          QWRT_L_, KC_INS,  TO_DV,   TO_RU,   KC_DEL,  SH_INS,  _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______, _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -235,3 +252,71 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 };
+
+typedef struct {
+    uint16_t keycode;
+    uint8_t axis;
+    int16_t offset;
+    bool pressed;
+    uint8_t opposite;
+} joystick_stick_state;
+
+joystick_stick_state j_stick[4] = {
+    [0] = { J_UP, 1, -127, false, 1 },
+    [1] = { J_DOWN, 1, 127, false, 0 },
+    [2] = { J_LEFT, 0, -127, false, 3 },
+    [3] = { J_RGHT, 0, 127, false, 2 },
+};
+
+bool process_joystick_stick_record(uint16_t keycode, bool pressed) {
+    for (int i = 0; i < 4; i++) {
+        if (keycode == j_stick[i].keycode) {
+            int16_t offset;
+            uint8_t axis = j_stick[i].axis;
+
+            if (pressed) {
+                offset = j_stick[i].offset;
+            } else if (j_stick[j_stick[i].opposite].pressed) {
+                offset = j_stick[j_stick[i].opposite].offset;
+            } else {
+                offset = 0;
+            }
+
+            j_stick[i].pressed = pressed;
+
+            joystick_set_axis(axis, offset);
+
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool process_joystick_button_record(uint16_t keycode, bool pressed) {
+    if (keycode < J_0 || keycode > J_9) {
+        return true;
+    }
+
+    uint8_t button = keycode - J_0;
+    if (pressed) {
+        register_joystick_button(button);
+    } else {
+        unregister_joystick_button(button);
+    }
+    return false;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    bool pressed = record->event.pressed;
+
+    if (!process_joystick_stick_record(keycode, pressed)) {
+        return false;
+    }
+
+    if (!process_joystick_button_record(keycode, pressed)) {
+        return false;
+    }
+
+    return true;
+}
