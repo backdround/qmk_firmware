@@ -50,7 +50,6 @@
 
 enum LAYOUTS {
     _DVORAK,
-    _QWERTY,
     _GAME_LAYOUT,
     _SYMBOLS_LEFT,
     _SYMBOLS_RIGHT,
@@ -73,7 +72,6 @@ enum LAYOUTS {
 #define MOVE_R_ MO(_MOVEMENT_RIGHT_OFFSET)
 
 // Base layouts
-#define QWRT_L_ DF(_QWERTY)
 #define GAME_L_ DF(_GAME_LAYOUT)
 #define DVRK_L_ DF(_DVORAK)
 
@@ -103,14 +101,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                          KC_LALT, KC_SPC,  SYMB_R_,     SYMB_L_, KC_SPC,  KC_LALT
   ),
 
-  [_QWERTY] = LAYOUT(
-     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    SPEC_,
-     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_LCTL,
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LGUI,     DVRK_L_, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                                         KC_LALT, KC_SPC,  SYMB_R_,     SYMB_L_, KC_SPC,  KC_LALT
-  ),
-
   [_GAME_LAYOUT] = LAYOUT(
      _______, _______, _______, _______, _______, _______,                       KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_ESC,
      _______, _______, J_UP,    _______, _______, _______,                       KC_R,    KC_E,    KC_UP,   KC_Q,    KC_TAB,  KC_P,
@@ -131,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______, _______, _______, _______, _______, _______,                       _______, KC_PSCR, W_PSCR,  _______, _______, _______,
      _______, S_F1,    S_F2,    S_F3,    S_F4,    _______,                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PAUSE,_______,
      _______, S_F5,    S_F6,    S_F7,    S_F8,    _______,                       KC_TAB,  KC_ENT,  KC_ESC,  KC_BSPC, SH_TAB,  _______,
-     _______, S_F9,    S_F10,   S_F11,   S_F12,   _______, GAME_L_,     QWRT_L_, KC_INS,  TO_DV,   TO_RU,   KC_DEL,  SH_INS,  _______,
+     _______, S_F9,    S_F10,   S_F11,   S_F12,   _______, GAME_L_,     _______, KC_INS,  TO_DV,   TO_RU,   KC_DEL,  SH_INS,  _______,
                                          _______, _______, _______,     _______, _______, _______
   ),
 
